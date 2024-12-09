@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanjivram's Math Tutoring AI</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e2f;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #000000; /* Black header */
+      text-align: center;
+      padding: 1rem;
+    }
+    header h1 {
+      margin: 0;
+    }
+    .container {
+      padding: 1rem;
+    }
+    .section {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: #2c2c3e;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .section h2 {
+      margin: 0 0 1rem 0;
+      color: #e0e0e0;
+    }
+    /* GitHub Button with G502 Glow */
+    button.github {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: #24292e;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 0 15px #00ffcc;
+      animation: rgbGlow 5s infinite;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+    button.github:hover {
+      box-shadow: 0 0 25px #00ffcc;
+    }
+    @keyframes rgbGlow {
+      0% { box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000; }
+      25% { box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00; }
+      50% { box-shadow: 0 0 15px #0000ff, 0 0 30px #0000ff; }
+      75% { box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff; }
+      100% { box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000; }
+    }
+    /* Chatbot Section */
+    #chat-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    #chat-display {
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 1rem;
+      height: 300px;
+      overflow-y: auto;
+      background: #1f1f2f;
+      color: #ccc;
+    }
+    #chat-input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #444;
+      border-radius: 8px;
+      background: #333;
+      color: #fff;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button.primary {
+      background-color: #4caf50;
+      color: white;
+    }
+    button.secondary {
+      background-color: #2196f3;
+      color: white;
+    }
+    /* Calculator Section */
+    #calculator {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+    }
+    .calc-display {
+      grid-column: span 4;
+      background: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: right;
+      font-size: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #444;
+    }
+    .calc-button {
+      background: #444;
+      color: #fff;
+      font-size: 1.25rem;
+      border-radius: 8px;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+    .calc-button:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Math Tutor</h1>
+    <p></p>
+  </header>
+  <div class="container">
+    <!-- Chatbot Section -->
+    <section class="section" id="chat-section">
+      <h2>Chatbot</h2>
+      <div id="chat-container">
+        <div id="chat-display"></div>
+        <input type="text" id="chat-input" placeholder="Ask me a question..." />
+        <button class="primary" id="chat-send">Send</button>
+      </div>
+      <div style="margin-top: 1rem;">
+        <button class="secondary" id="add-info">Add More Info</button>
+      </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="section" id="calculator-section">
+      <h2>Scientific Calculator</h2>
+      <div id="calculator">
+        <div id="calc-display" class="calc-display">0</div>
+        <!-- Number Buttons -->
+        <button class="calc-button">7</button>
+        <button class="calc-button">8</button>
+        <button class="calc-button">9</button>
+        <button class="calc-button">/</button>
+        <button class="calc-button">4</button>
+        <button class="calc-button">5</button>
+        <button class="calc-button">6</button>
+        <button class="calc-button">*</button>
+        <button class="calc-button">1</button>
+        <button class="calc-button">2</button>
+        <button class="calc-button">3</button>
+        <button class="calc-button">-</button>
+        <button class="calc-button">0</button>
+        <button class="calc-button">.</button>
+        <button class="calc-button">=</button>
+        <button class="calc-button">+</button>
+        <!-- Scientific Buttons -->
+        <button class="calc-button">sin</button>
+        <button class="calc-button">cos</button>
+        <button class="calc-button">tan</button>
+        <button class="calc-button">log</button>
+        <button class="calc-button">(</button>
+        <button class="calc-button">)</button>
+        <button class="calc-button">^</button>
+        <button class="calc-button">√</button>
+      </div>
+    </section>
+  </div>
+  <button class="github" onclick="window.open('https://github.com/y8tireu', '_blank')">GitHub Profile</button>
+
+  <script>
+    // Chatbot Functionality with Local Storage
+    let chatbotResponses = JSON.parse(localStorage.getItem("chatbotResponses")) || {
+      hello: "Hello! How can I assist you with math today?",
+      "how are you": "I'm just a chatbot, but I'm here to help you!",
+      "what is math": "Math is the study of numbers, shapes, and patterns. It's essential for understanding the world.",
+      "tell me about algebra": "Algebra is the branch of math dealing with symbols and equations. For example, solving x + 2 = 5 gives x = 3.",
+      "what is pi": "Pi (π) is approximately 3.14159. It's the ratio of a circle's circumference to its diameter.",
+      "help with calculus": "Calculus is the study of change. It includes differentiation (rates of change) and integration (area under curves).",
+    };
+
+    const chatDisplay = document.getElementById("chat-display");
+    const chatInput = document.getElementById("chat-input");
+    const chatSend = document.getElementById("chat-send");
+    const addInfoButton = document.getElementById("add-info");
+
+    chatSend.addEventListener("click", () => {
+      const userMessage = chatInput.value.trim().toLowerCase();
+      if (!userMessage) return;
+
+      // Add user message to chat
+      chatDisplay.innerHTML += `<div><strong>You:</strong> ${userMessage}</div>`;
+
+      // Generate chatbot response
+      const response = chatbotResponses[userMessage] || "I'm sorry, I don't understand that. Add more info if you'd like.";
+      
+      // Add chatbot response to chat
+      chatDisplay.innerHTML += `<div><strong>Bot:</strong> ${response}</div>`;
+      chatInput.value = "";
+      chatDisplay.scrollTop = chatDisplay.scrollHeight;
+    });
+
+    // Add More Info Functionality
+    addInfoButton.addEventListener("click", () => {
+      const key = prompt("Enter the question or keyword (e.g., 'what is geometry'):");
+      if (!key) {
+        alert("Question cannot be empty.");
+        return;
+      }
+      const value = prompt(`Enter the response for "${key}":`);
+      if (!value) {
+        alert("Response cannot be empty.");
+        return;
+      }
+
+      // Save to local storage
+      chatbotResponses[key.toLowerCase()] = value;
+      localStorage.setItem("chatbotResponses", JSON.stringify(chatbotResponses));
+
+      alert(`Info added! Now I can respond to: "${key}"`);
+    });
+
+    // Calculator Functionality
+    const calcDisplay = document.getElementById("calc-display");
+    let calcExpression = "";
+
+    document.querySelectorAll(".calc-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const value = button.textContent;
+        if (value === "=") {
+          try {
+            let expression = calcExpression;
+            expression = expression.replace("^", "**");
+            expression = expression.replace("√", "Math.sqrt");
+            calcDisplay.textContent = eval(expression);
+          } catch {
+            calcDisplay.textContent = "Error";
+          }
+          calcExpression = "";
+        } else if (value === "C") {
+          calcExpression = "";
+          calcDisplay.textContent = "0";
+        } else {
+          calcExpression += value;
+          calcDisplay.textContent = calcExpression;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
